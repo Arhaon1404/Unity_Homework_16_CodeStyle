@@ -12,11 +12,11 @@ public class BulletShooter : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(_shootingWorker());
+        StartCoroutine(Shoot());
         _sleepTime = new WaitForSeconds(_shootDelay);
     }
 
-    private IEnumerator _shootingWorker()
+    private IEnumerator Shoot()
     {
         while (true)
         {
