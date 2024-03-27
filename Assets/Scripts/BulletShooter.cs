@@ -8,9 +8,12 @@ public class BulletShooter : MonoBehaviour
     [SerializeField] private float _shootDelay;
     [SerializeField] private Transform ObjectToShoot;
     
+    private WaitForSeconds _sleepTime;
+
     private void Start()
     {
         StartCoroutine(_shootingWorker());
+        _sleepTime = new WaitForSeconds(_shootDelay);
     }
 
     private IEnumerator _shootingWorker()
@@ -21,9 +24,9 @@ public class BulletShooter : MonoBehaviour
             var bullet = Instantiate(_bullet, transform.position + direction, Quaternion.identity);
 
             bullet.transform.up = direction;
-            bullet.GetComponent<Rigidbody>().velocity = direction * _speed;
+            bullet.Rigidbody.velocity = direction * _speed;
 
-            yield return new WaitForSeconds(_shootDelay);
+            yield return _sleepTime;
         }
     }
 }
