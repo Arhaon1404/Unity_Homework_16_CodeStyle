@@ -23,8 +23,7 @@ public class BulletShooter : MonoBehaviour
             var direction = (ObjectToShoot.position - transform.position).normalized;
             var bullet = Instantiate(_bullet, transform.position + direction, Quaternion.identity);
 
-            bullet.transform.up = direction;
-            bullet.Rigidbody.velocity = direction * _speed;
+            bullet.SetDirection(direction,_speed);
 
             yield return _sleepTime;
         }

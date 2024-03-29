@@ -8,7 +8,6 @@ public class PlaceChanger : MonoBehaviour
 
     private int _placeNumber;
     
-
     private void Start()
     {
         _arrayPlaces = new Transform[_pointsPlaces.childCount];
@@ -29,7 +28,8 @@ public class PlaceChanger : MonoBehaviour
 
     private void NextPlace()
     {
-        _placeNumber = _placeNumber++ % _arrayPlaces.Length;
+        _placeNumber++;
+        _placeNumber = _placeNumber % _arrayPlaces.Length;
 
         var pointVector = _arrayPlaces[_placeNumber].transform.position;
         transform.forward = pointVector - transform.position;
